@@ -7,28 +7,49 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@drawable/gradient"
     tools:context=".MainActivityFragment">
 
     <TextView
         android:id="@+id/instructions_text_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:textColor="@color/colorWhite"
+        android:textStyle="bold"
+        android:layout_marginTop="@dimen/xlarge"
+        android:layout_marginLeft="@dimen/activity_horizontal_margin"
+        android:layout_marginRight="@dimen/activity_horizontal_margin"
+        android:textSize="@dimen/text_large"
+        android:gravity="center_horizontal"
         android:text="@string/instructions" />
+
+    <ProgressBar
+        android:id="@+id/progress_bar"
+        android:layout_width="@dimen/progress_bar"
+        android:layout_height="@dimen/progress_bar"
+        android:visibility="invisible"
+        android:layout_centerInParent="true" />
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/instructions_text_view"
+        android:layout_above="@+id/adView"
+        android:layout_marginBottom="@dimen/large"
+        android:layout_centerHorizontal="true"
+        android:background="@drawable/button"
+        android:textColor="@color/colorPink"
+        android:paddingLeft="@dimen/large"
+        android:paddingRight="@dimen/large"
         android:onClick="tellJoke"
         android:text="@string/button_text" />
 
     <com.google.android.gms.ads.AdView
-        android:id="@+id/adView"
+        android:id="@id/adView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         ads:adSize="BANNER"
-        ads:adUnitId="@string/banner_ad_unit_id" />
+        ads:adUnitId="@string/ad_unit_id" />
 
 </RelativeLayout>

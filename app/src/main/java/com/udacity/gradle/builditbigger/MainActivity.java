@@ -5,9 +5,8 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
-import android.view.Menu;
-import android.view.MenuItem;
 import android.view.View;
+import android.widget.ProgressBar;
 import android.widget.Toast;
 
 import com.google.android.gms.ads.AdListener;
@@ -19,7 +18,9 @@ import com.tamlove.jokeandroidlib.Utils;
 
 public class MainActivity extends AppCompatActivity {
 
+    private static final String AD_UNIT_TEST_ID = "ca-app-pub-3940256099942544/1033173712";
     private InterstitialAd mInterstitialAd;
+    private ProgressBar mProgressBar;
 
 
     @Override
@@ -27,35 +28,15 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        mProgressBar = findViewById(R.id.progress_bar);
+
         mInterstitialAd = new InterstitialAd(this);
-        mInterstitialAd.setAdUnitId("ca-app-pub-3940256099942544/1033173712");
+        mInterstitialAd.setAdUnitId(AD_UNIT_TEST_ID);
         mInterstitialAd.loadAd(new AdRequest.Builder().build());
     }
 
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
     public void tellJoke(View view) {
+        mProgressBar.setVisibility(View.VISIBLE);
         if (mInterstitialAd.isLoaded()) {
             Log.v("MainActivity", "Add loaded");
             mInterstitialAd.show();
@@ -70,6 +51,7 @@ public class MainActivity extends AppCompatActivity {
                     handler.postDelayed(new Runnable() {
                         @Override
                         public void run() {
+                            mProgressBar.setVisibility(View.INVISIBLE);
                             startActivity(jokeIntent);
                         }
                     }, 3000);
