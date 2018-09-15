@@ -1,5 +1,6 @@
 package com.udacity.gradle.builditbigger;
 
+import android.content.Context;
 import android.os.AsyncTask;
 
 import com.google.api.client.extensions.android.http.AndroidHttp;
@@ -14,6 +15,7 @@ public class JokeAsyncTask extends AsyncTask<Void, Void, String> {
 
     private static final String LOCALHOST = "http://10.0.2.2:8080/_ah/api/";
     private static MyApi apiService = null;
+    private Context context;
     private RequestFinishedListener mRequestFinishedListener;
 
     public JokeAsyncTask(RequestFinishedListener requestFinishedListener) {
@@ -43,7 +45,7 @@ public class JokeAsyncTask extends AsyncTask<Void, Void, String> {
         try {
             return apiService.getAJoke().execute().getJokeData();
         } catch (IOException e) {
-            return e.getMessage();
+            return null;
         }
     }
 

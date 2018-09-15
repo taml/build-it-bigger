@@ -30,7 +30,7 @@ public class MainActivityFragment extends Fragment {
         View root = inflater.inflate(R.layout.fragment_main, container, false);
 
         mProgressBar = root.findViewById(R.id.progress_bar);
-        mProgressBar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#"+Integer.toHexString(ContextCompat.getColor(getContext(), R.color.colorPink))),
+        mProgressBar.getIndeterminateDrawable().setColorFilter(Color.parseColor("#" + Integer.toHexString(ContextCompat.getColor(getContext(), R.color.colorPink))),
                 android.graphics.PorterDuff.Mode.MULTIPLY);
         mJokeButton = root.findViewById(R.id.tellJoke_button);
         mJokeButton.setOnClickListener(new View.OnClickListener() {
@@ -48,20 +48,19 @@ public class MainActivityFragment extends Fragment {
         new JokeAsyncTask(new JokeAsyncTask.RequestFinishedListener() {
             @Override
             public void onRequestFinished(String jokeData) {
-                if(jokeData != null) {
-                    final Intent jokeIntent = new Intent(getContext(), JokeActivity.class);
-                    jokeIntent.putExtra(Utils.JOKE_KEY, jokeData);
-                    final Handler handler = new Handler();
-                    handler.postDelayed(new Runnable() {
-                        @Override
-                        public void run() {
-                            mProgressBar.setVisibility(View.INVISIBLE);
-                            startActivity(jokeIntent);
-                        }
-                    }, 3000);
-                } else {
+                if (jokeData == null) {
                     Toast.makeText(getContext(), "Error fetching a joke", Toast.LENGTH_SHORT).show();
                 }
+                final Intent jokeIntent = new Intent(getContext(), JokeActivity.class);
+                jokeIntent.putExtra(Utils.JOKE_KEY, jokeData);
+                final Handler handler = new Handler();
+                handler.postDelayed(new Runnable() {
+                    @Override
+                    public void run() {
+                        mProgressBar.setVisibility(View.INVISIBLE);
+                        startActivity(jokeIntent);
+                    }
+                }, 3000);
             }
         }).execute();
     }

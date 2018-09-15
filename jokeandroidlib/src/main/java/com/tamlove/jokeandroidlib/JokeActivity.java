@@ -25,6 +25,9 @@ public class JokeActivity extends AppCompatActivity {
         String currentJoke;
         if(intent.hasExtra(Utils.JOKE_KEY)) {
             currentJoke = intent.getStringExtra(Utils.JOKE_KEY);
+            if(currentJoke == null) {
+                currentJoke = getResources().getString(R.string.joke_error);
+            }
         } else {
             currentJoke = getResources().getString(R.string.joke_error);
         }
