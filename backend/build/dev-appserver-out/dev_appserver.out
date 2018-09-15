@@ -1,0 +1,27 @@
+objc[3218]: Class JavaLaunchHelper is implemented in both /Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/bin/java (0x1077de4c0) and /Library/Java/JavaVirtualMachines/jdk1.8.0_45.jdk/Contents/Home/jre/lib/libinstrument.dylib (0x1078624e0). One of the two will be used. Which one is undefined.
+Warning: Google App Engine Java 7 runtime is deprecated.
+Warning: See https://cloud.google.com/appengine/docs/deprecations/java7
+Sep 15, 2018 11:49:29 PM com.google.appengine.tools.development.SystemPropertiesManager setSystemProperties
+INFO: Overwriting system property key 'java.util.logging.config.file', value '/Users/Tamsin/google-cloud-sdk/platform/google_appengine/google/appengine/tools/java/config/sdk/logging.properties' with value 'WEB-INF/logging.properties' from '/Users/Tamsin/AndroidStudioProjects/BuildItBigger/backend/build/exploded-backend/WEB-INF/appengine-web.xml'
+Sep 15, 2018 11:49:30 PM com.google.apphosting.utils.jetty.JettyLogger info
+INFO: Logging to JettyLogger(null) via com.google.apphosting.utils.jetty.JettyLogger
+Sep 15, 2018 11:49:30 PM com.google.appengine.tools.development.IsolatedAppClassLoader checkWorkingDirectory
+WARNING: Your working directory, (/Users/Tamsin/AndroidStudioProjects/BuildItBigger) is not equal to your 
+web application root (/Users/Tamsin/AndroidStudioProjects/BuildItBigger/backend/build/exploded-backend)
+You will not be able to access files from your working directory on the production server.
+
+Sep 15, 2018 11:49:30 PM com.google.apphosting.utils.jetty.JettyLogger info
+INFO: jetty-6.1.x
+Sep 15, 2018 11:49:34 PM com.google.apphosting.utils.jetty.JettyLogger info
+INFO: Started SelectChannelConnector@localhost:8080
+Sep 15, 2018 11:49:34 PM com.google.appengine.tools.development.AbstractModule startup
+INFO: Module instance default is running at http://localhost:8080/
+Sep 15, 2018 11:49:34 PM com.google.appengine.tools.development.AbstractModule startup
+INFO: The admin console is running at http://localhost:8080/_ah/admin
+Sep 15, 2018 11:49:34 PM com.google.appengine.tools.development.DevAppServerImpl doStart
+INFO: Dev App Server is now running
+Sep 15, 2018 11:50:42 PM com.google.appengine.tools.development.AbstractModule shutdown
+Shutting down.
+INFO: Shutting down module instance default
+Sep 15, 2018 11:50:42 PM com.google.appengine.api.datastore.dev.LocalDatastoreService cleanupActiveServices
+INFO: scheduler shutting down.

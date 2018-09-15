@@ -20,3 +20,27 @@ allprojects {
         google()
     }
 }
+
+task startGCEngine (dependsOn: ":backend:appengineStart") {
+    doLast {
+        println "Started Google Cloud App Engine"
+    }
+}
+
+task stopGCEngine (dependsOn: ":backend:appengineStop") {
+    doLast {
+        println "Stopped Google Cloud App Engine"
+    }
+}
+
+task runAsyncTest (dependsOn: ":app:connectedAndroidTest") {
+    doLast {
+        println "Espresso test complete"
+    }
+}
+
+task gceServerAndTest (dependsOn: "startGCEngine") {
+    mustRunAfter startGCEngine
+    dependsOn runAsyncTest
+    finalizedBy stopGCEngine
+}

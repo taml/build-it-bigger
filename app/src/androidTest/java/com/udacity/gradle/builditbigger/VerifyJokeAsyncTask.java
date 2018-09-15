@@ -48,6 +48,8 @@ public class VerifyJokeAsyncTask {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+        // Guidance provided by - https://stackoverflow.com/questions/48723474/how-to-check-if-an-activity-receives-an-intent-sent-from-another-activity
+        // and https://developer.android.com/training/testing/espresso/intents
         intended(allOf(hasComponent(JokeActivity.class.getName()), hasExtra(equalTo(Utils.JOKE_KEY), notNullValue())));
         onView(withId(R.id.joke_textview)).check(matches(isDisplayed()));
         onView(withId(R.id.joke_textview)).check(matches(not(withText(errorText))));
